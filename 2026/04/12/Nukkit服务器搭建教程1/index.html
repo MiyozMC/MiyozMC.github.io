@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="desktop" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>Nukkit服务器搭建教程 | ShiinaHikari</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="前言你不认真学谁来也教不会你，在你还没抱着学会开服的心态前，请不要学习此教程！ 尽管这个教程已经尽量小白化了，但依旧推荐有计算机基础的人来学习(至少你应该知道什么是文件夹，如何解压压缩包什么的)  0.环境准备在正式开始前，请保证你的服务器环境安装了JDK(Java Development Kits) 1234567你有可能问我：什么是JDK？什么是JRE？我该选择什么版本的JDK？JDK是Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nukkit服务器搭建教程">
+<meta property="og:url" content="https://nemocat.top/2026/04/12/Nukkit%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B1/index.html">
+<meta property="og:site_name" content="ShiinaHikari">
+<meta property="og:description" content="前言你不认真学谁来也教不会你，在你还没抱着学会开服的心态前，请不要学习此教程！ 尽管这个教程已经尽量小白化了，但依旧推荐有计算机基础的人来学习(至少你应该知道什么是文件夹，如何解压压缩包什么的)  0.环境准备在正式开始前，请保证你的服务器环境安装了JDK(Java Development Kits) 1234567你有可能问我：什么是JDK？什么是JRE？我该选择什么版本的JDK？JDK是Jav">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nemocat.top/image/HexoVivia/home.png">
+<meta property="article:published_time" content="2026-04-12T15:13:47.000Z">
+<meta property="article:modified_time" content="2026-07-26T07:14:26.514Z">
+<meta property="article:author" content="ShiinaHikari">
+<meta property="article:tag" content="Nukkit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nemocat.top/image/HexoVivia/home.png">
+  
+    <link rel="alternate" href="/atom.xml" title="ShiinaHikari" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="https://q.qlogo.cn/headimg_dl?dst_uin=1544517326&spec=640&img_type=ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/site/banner.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>ShiinaHikari </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/archives">归档</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS 订阅">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/archives">归档</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS 订阅">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=https://q.qlogo.cn/headimg_dl?dst_uin=1544517326&spec=640&img_type=jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">ShiinaHikari </div>
+      <div class="dot"></div>
+      <div class="subtitle">椎名光璃 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/1666723512" title="BiliBili"><i class="fa-brands fa-bilibili"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/ShiinaHikariOVO" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/Nukkit%E7%B3%BB%E5%88%97/">
+                Nukkit系列
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E5%9F%BA%E5%B2%A9%E7%89%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                基岩版服务器
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E7%B3%BB%E5%88%97/">
+                网络系列
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Github-Page/" rel="tag">Github Page</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Nukkit/" rel="tag">Nukkit</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/TODO/" rel="tag">TODO</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/XenForo/" rel="tag">XenForo</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/vivia/" rel="tag">vivia</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">归档</h3>
+      
+      
+        <a class="archive-link" href="/archives/2026/04 ">
+          四月 2026 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2026/01 ">
+          一月 2026 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2025/03 ">
+          三月 2025 
+          <div class="archive-count">4 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最新文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2026/04/12/Nukkit%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B1/" title="Nukkit服务器搭建教程" >
+            <div class="recent-link-text">
+              Nukkit服务器搭建教程
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2026/01/24/%E4%BD%BF%E7%94%A8Docker%20Compose%E5%AE%89%E8%A3%85Vikunja/" title="使用Docker Compose安装Vikunja" >
+            <div class="recent-link-text">
+              使用Docker Compose安装Vikunja
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/22/%E4%BD%BF%E7%94%A8Docker%E5%AE%89%E8%A3%85Projector-IDEA/" title="使用Docker安装Projector-IDEA" >
+            <div class="recent-link-text">
+              使用Docker安装Projector-IDEA
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/09/%E6%90%AD%E5%BB%BAHexo%E5%B9%B6%E4%BD%BF%E7%94%A8vivia%E4%B8%BB%E9%A2%98%E5%86%8D%E6%89%98%E7%AE%A1%E5%88%B0GithubPage/" title="搭建Hexo并使用vivia主题再托管到GithubPage" >
+            <div class="recent-link-text">
+              搭建Hexo并使用vivia主题再托管到GithubPage
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/03/08/Nukkit%E5%88%86%E6%94%AF%E6%A0%B8%E5%BF%83Nukkit-MOT/" title="Nukkit分支核心推荐:Nukkit-MOT" >
+            <div class="recent-link-text">
+              Nukkit分支核心推荐:Nukkit-MOT
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-Nukkit服务器搭建教程1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img" rel="gallery_cuidt7oQx7gGoe-8AMd1k0Cw2">
+        <img src="/image/HexoVivia/home.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        Nukkit服务器搭建教程
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2026-04-12T15:13:47.000Z" itemprop="datePublished">2026-04-12</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E5%9F%BA%E5%B2%A9%E7%89%88%E6%9C%8D%E5%8A%A1%E5%99%A8/">基岩版服务器</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            3.2k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nukkit/" rel="tag">Nukkit</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>你不认真学谁来也教不会你，在你还没抱着学会开服的心态前，请不要学习此教程！</p>
+<p>尽管这个教程已经尽量小白化了，但依旧推荐有计算机基础的人来学习(至少你应该知道什么是文件夹，如何解压压缩包什么的)</p>
+<hr>
+<h1 id="0-环境准备"><a href="#0-环境准备" class="headerlink" title="0.环境准备"></a>0.环境准备</h1><p>在正式开始前，请保证你的服务器环境安装了JDK(Java Development Kits)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">你有可能问我：什么是JDK？什么是JRE？我该选择什么版本的JDK？</span><br><span class="line"></span><br><span class="line">JDK是Java的开发工具包，他包含了JRE的所有内容，除此以外，他还有供开发者使用的一些开发工具什么的(例如编译器什么的)，虽然一般人非开发者可能用不到就是了（）但还是推荐安装JDK</span><br><span class="line"></span><br><span class="line">那么JRE是什么呢？你可以理解为运行Java程序的基础包，没有他运行不了Java写的程序</span><br><span class="line"></span><br><span class="line">JDK的版本随你使用的Nukkit核心要求而变化，具体使用哪个在下面的核心选择里面有讲</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-选择核心"><a href="#1-选择核心" class="headerlink" title="1.选择核心"></a>1.选择核心</h1><p>不同核心有不同的特点，目前官方Nukkit早已归档，剩下都是社区开发的分支版本，分支版本多种多样，但具体使用哪个得根据你的使用用途</p>
+<h3 id="1-Nukkit-NukkitX"><a href="#1-Nukkit-NukkitX" class="headerlink" title="1.Nukkit(NukkitX)"></a>1.Nukkit(NukkitX)</h3><p>推荐指数：●●●○○</p>
+<p>此并非是由原Nukkit开发团队维护的版本，现在是CloudburstMC团队在维护。目前此版本仅限于更新版本支持而没有其他新内容什么的，在中文社区内常被调侃：不思进取<br>但目前他仍然是基础核心，CloudburstMC社区(差不多算是国际Nukkit社区)里面的插件大多基于此开发</p>
+<p>仓库链接: <a target="_blank" rel="noopener" href="https://github.com/NukkitX/Nukkit">Github</a></p>
+<h3 id="2-NukkitPM1E"><a href="#2-NukkitPM1E" class="headerlink" title="2.NukkitPM1E"></a>2.NukkitPM1E</h3><p>推荐指数：●○○○○</p>
+<p>此分支为社区知名开发者PetterM1进行主要维护开发，其修复了原版Nukkit不少的BUG，并支持几乎全版本的MC基岩版(1.2.x-最新版)，在以前成为了社区主流核心，但后续PM1删除了仓库所有代码，每次发布的PM1E都是经过了混淆，违反了Nukkit的GPL开源协议，随后被社区指责并抛弃。虽然现在PM1已经把源码上传回来了，但由于其风评崩坏，社区开发者不太愿意继续为PM1E提供插件适配支持(Ps:据了解，在闭源期间，如果你想要获取PM1E源码，需联系PM1进行购买，并且现在即使上传回了源码，但也只有最新的，获取以前的源码仍需购买)</p>
+<p>仓库链接：<a target="_blank" rel="noopener" href="https://github.com/MemoriesOfTime/Nukkit-MOT">Github</a></p>
+<h3 id="3-NukkitMOT"><a href="#3-NukkitMOT" class="headerlink" title="3.NukkitMOT"></a>3.NukkitMOT</h3><p>推荐指数：●●●●○</p>
+<p>此分支是社区开发者LT_Name基于PM1E最后一个开源版本进行开发的分支核心，他不仅继承了原PM1E多数优点，还支持了自定义物品，自定义方块等，他也是受到网易Minecraft官方支持的核心(包括但不限于基于Nukkit-MOT开发NukkitMaster)，国内社区基本上都基于Nukkit-MOT进行插件开发，拥有广阔的社区支持，因为LT_Name坚持尽量不破坏原版API，所以他对NukkitX，NukkitPM1E等核心的插件兼容性良好，适合RPG，小游戏服务器。(生存服勉强能用)但因为客观事实上LT_Name确实没PM1实力强悍，核心可能会有些许小bug，但是就凭Name的热爱，笔者已经哭的死去活来了(bushi)</p>
+<h3 id="4-PowerNukkitX"><a href="#4-PowerNukkitX" class="headerlink" title="4.PowerNukkitX"></a>4.PowerNukkitX</h3><p>推荐指数：●●●●○</p>
+<p>此分支原是国内知名开发者超神的冰凉领导国内开发者圈子开发，现PNX2.0开发工作已移交至国外开发者。此分支拥有良好的性能优化，最低基础配置要求仅1h2g(来自官方介绍)，在面临100人的游玩情况下表现也是相当优秀。其次，此核心原生支持Terra史诗地形生成器，拥有优质的地形效果，此核心的生物AI也是经过了精心开发，与其他分支相比，他的生物AI也是非常先进，完善。此分支拥有良好的特性支持，虽然不推荐生电，但是生存服完全够了，他支持了1.19全部新内容等。</p>
+<p>Ps: 请注意，PNX2.0 的API大变，对于社区插件的兼容性差，建议有技术力的服主使用！</p>
+<h1 id="2-第一次启动核心"><a href="#2-第一次启动核心" class="headerlink" title="2.第一次启动核心"></a>2.第一次启动核心</h1><p>我们这里使用Nukkit-MOT做演示，以及在Windows平台上面的使用教程，首先我们去<a target="_blank" rel="noopener" href="https://motci.cn/job/Nukkit-MOT/job/master/">构建站</a>下载最新的Nukkit-MOT构建版本:Nukkit-MOT-SNAPSHOT.jar，然后把他放在一个指定的文件夹里面，新建一个文本文件，命名：start.bat，并且编辑写入：java -jar Nukkit-MOT-SNAPSHOT.jar。双击启动脚本运行即可，如果cmd提示<code>&#39;java&#39; 不是内部或外部命令，也不是可运行的程序或批处理文件。</code>，那么那应该是没有安装Java&#x2F;没有配置Java环境变量，如果你没有遇到任何问题，正常启动了，那么可以2.1前往3继续观看了喔~</p>
+<p>Ps: Nukkit-MOT需要使用Java17启动，而不是Java8，但是因为Java具有向下兼容性，所以就算使用Java25，也可以正常启动并使用Nukkit-MOT</p>
+<h1 id="2-1-附-环境变量配置"><a href="#2-1-附-环境变量配置" class="headerlink" title="2.1[附] 环境变量配置"></a>2.1[附] 环境变量配置</h1><ol>
+<li>打开设置界面：<ul>
+<li>右键点击桌面上的 “此电脑”，选择 “属性”。</li>
+<li>点击左侧的 “高级系统设置”，在弹出的窗口中点 “环境变量”。</li>
+</ul>
+</li>
+<li>新建 JAVA_HOME 变量（针对系统变量）：<ul>
+<li>在“系统变量”区域点击 “新建”。</li>
+<li>变量名：输入 JAVA_HOME（注意拼写和大小写）。</li>
+<li>变量值：粘贴你的 JDK 安装路径。<ul>
+<li>如何找路径？ 默认一般在 C:\Program Files\Java\ 文件夹下，例如 C:\Program Files\Java\jdk-17。注意路径中不要包含 \bin。</li>
+</ul>
+</li>
+<li>点击 “确定” 保存。</li>
+</ul>
+</li>
+<li>编辑 Path 变量（让系统识别命令）：<ul>
+<li>在“系统变量”列表中找到 Path 变量，选中后点击 “编辑”。</li>
+<li>点击右侧的 “新建”，输入 %JAVA_HOME%\bin。</li>
+<li>（可选）如果有 C:\Program Files\Common Files\Oracle\Java\javapath 类似的旧路径，建议选中后点右侧 “删除”，避免版本冲突。</li>
+<li>依次点击 “确定” 关闭所有窗口。</li>
+</ul>
+</li>
+</ol>
+<p>第三步：验证是否成功</p>
+<p>配置完成后，一定要重新打开一个新的 CMD 窗口（旧的没刷新，还会报错）。</p>
+<p>输入 java -version，如果现在能看到 Java 版本信息，就说明配置成功了。</p>
+<p>另外提醒一下：JAVA_HOME 的路径里最好不要有中文或空格，否则一些老工具读取时可能会出错。</p>
+<h1 id="3-了解服务器结构"><a href="#3-了解服务器结构" class="headerlink" title="3.了解服务器结构"></a>3.了解服务器结构</h1><p>服务器启动之后会生成一些文件，文件夹，其中有几个常用的文件&#x2F;文件夹你需要记住：</p>
+<ul>
+<li>server.properties # 服务器的基础配置</li>
+<li>nukkit-mot.yml # 服务器的高级配置，比较重要(其他核心可能是nukkit.yml什么的，又或者没有)</li>
+<li>ops.txt # 服务器的OP，一行一个，你也可以控制台op &lt;玩家名&gt;添加(不用带&#x2F;，带空格的玩家名使用””包裹)</li>
+<li>bin # 可能是Nukkit-MOT独有的，这里面需要自己手动添加方块调色板，如果你使用的插件不用自定义方块就不用管</li>
+<li>plugins # 插件文件夹，最核心的文件夹之一，大部分jar插件都丢在这里面</li>
+<li>worlds # 世界文件夹，服务器支持多世界(Ps:Nukkit一般使用的是Java版1.12.2的地图，但是Nukkit-MOT支持基岩版地图)</li>
+<li>resource_packs # 资源包文件夹，支持zip或者mcpack</li>
+</ul>
+<h1 id="4-修改服务器配置"><a href="#4-修改服务器配置" class="headerlink" title="4.修改服务器配置"></a>4.修改服务器配置</h1><p>主要修改的文件是：server.properties和nukkit-mot.yml(nukkit.yml)，里面大部分都有批注，没有的可以去<a target="_blank" rel="noopener" href="http://www.nukkit-mot.com文档站查询,这里不多赘述/">www.nukkit-mot.com文档站查询，这里不多赘述</a></p>
+<h1 id="5-寻找插件"><a href="#5-寻找插件" class="headerlink" title="5.寻找插件"></a>5.寻找插件</h1><p>目前资源主要集中在:</p>
+<ul>
+<li>github.com</li>
+<li>minebbs.com</li>
+<li>cloudburstmc.org</li>
+</ul>
+<p>上面，其中<a href="github.com">github.com</a>可能需要魔法,并且有一定门槛，<a href="cloudburstmc.org">cloudburstmc.org</a>主要是国际开发者发布的地方，<a href="minebbs.com">minebbs.com</a>主要是国内开发者发布资源的地方，少量发布在<a href="bbs.nukkit-mot.com">bbs.nukkit-mot.com</a></p>
+<p>下载插件前请一定要注意有没有前置插件，不然会导致一系列问题</p>
+<p>未完待续…</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2026/01/24/%E4%BD%BF%E7%94%A8Docker%20Compose%E5%AE%89%E8%A3%85Vikunja/"
+      title="使用Docker Compose安装Vikunja"
+     >
+
+    <p class="title-text">
+      
+        使用Docker Compose安装Vikunja
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2026 ShiinaHikari<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
